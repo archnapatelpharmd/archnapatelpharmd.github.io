@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Archna Patel, Pharm.D.</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a1929 0%, #0f2d4a 60%, #0a2a1e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    padding: 32px 16px;
+    gap: 20px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+  }
+
+  /* ===== FRONT ===== */
+  #front {
+    background: #0B1F3A;
+    border: 1px solid rgba(0,201,177,0.25);
+    padding: 32px 28px 26px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  #front::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,201,177,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,201,177,0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+
+  .orb {
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, rgba(0,201,177,0.15), transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes pulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50%      { opacity:.6; transform:scale(1.08); }
+  }
+
+  .f-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+  }
+  .f-cred {
+    font-size: 15px;
+    font-weight: 700;
+    color: #00C9B1;
+    margin-left: 6px;
+  }
+  .f-tagline {
+    font-size: 10px;
+    color: #6B8BAE;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .f-years {
+    font-size: 10px;
+    font-weight: 600;
+    color: #00C9B1;
+    letter-spacing: 0.8px;
+    margin-top: 8px;
+    margin-bottom: 2px;
+    position: relative;
+    z-index: 1;
+  }
+  .f-divider {
+    width: 40px; height: 2px;
+    background: linear-gradient(90deg, #00C9B1, transparent);
+    border-radius: 2px;
+    margin: 16px 0;
+    position: relative;
+    z-index: 1;
+  }
+  .f-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #E8B86D;
+    line-height: 1.45;
+    position: relative;
+    z-index: 1;
+  }
+  .f-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .pill {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: #00C9B1;
+    border: 1px solid rgba(0,201,177,0.35);
+    border-radius: 20px;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    background: rgba(0,201,177,0.07);
+  }
+  .f-contact {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .f-row {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .f-row .ico { color: #00C9B1; }
+
+  /* ===== BACK ===== */
+  #back {
+    display: none;
+    background: #f0faf9;
+    border: 1px solid rgba(0,201,177,0.3);
+    padding: 28px 26px 24px;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .b-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #0B1F3A;
+  }
+  .b-quote {
+    font-size: 11px;
+    color: #6B8BAE;
+    font-style: italic;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .b-badge {
+    display: inline-block;
+    margin-top: 10px;
+    background: #00C9B1;
+    color: #0B1F3A;
+    font-family: 'Syne', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+
+  .b-pillars {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .pillar {
+    background: #fff;
+    border-radius: 10px;
+    border-left: 3px solid #00C9B1;
+    padding: 12px 14px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .p-ico { font-size: 18px; flex-shrink: 0; line-height: 1; }
+  .p-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #0B1F3A;
+    line-height: 1.2;
+  }
+  .p-sub {
+    font-size: 10px;
+    color: #6B8BAE;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  .b-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.09);
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #0B1F3A;
+  }
+  .stat-lbl {
+    font-size: 8px;
+    color: #6B8BAE;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  .b-footer {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .b-contact {
+    font-size: 10px;
+    color: #6B8BAE;
+    line-height: 1.7;
+  }
+  .b-contact strong { color: #0B1F3A; display: block; font-size: 11px; }
+  .b-li {
+    font-size: 10px;
+    color: #00C9B1;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ===== BUTTONS ===== */
+  .toggle-btn {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(0,201,177,0.1);
+    border: 1px solid rgba(0,201,177,0.3);
+    color: #00C9B1;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 11px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .toggle-btn:hover { background: rgba(0,201,177,0.2); }
+
+  .share-btn {
+    width: 100%;
+    max-width: 420px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.4);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    padding: 9px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    letter-spacing: 0.4px;
+    transition: background 0.2s;
+  }
+  .share-btn:hover { background: rgba(255,255,255,0.06); }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- FRONT -->
+  <div id="front">
+    <div class="orb"></div>
+    <div class="f-name">Archna Patel <span class="f-cred">Pharm.D.</span></div>
+    <div class="f-tagline">AI Enablement &amp; Transformation &nbsp;&middot;&nbsp; Regulated Pharma &nbsp;&middot;&nbsp; Life Sciences</div>
+    <div class="f-years">20+ Years in Pharma &nbsp;&middot;&nbsp; Clinical &nbsp;&middot;&nbsp; Commercial &nbsp;&middot;&nbsp; AI</div>
+    <div class="f-divider"></div>
+    <div class="f-role">AI Enablement &amp; Transformation Leader<br>Clinical Credibility &nbsp;&middot;&nbsp; Governed Execution &nbsp;&middot;&nbsp; Measurable Adoption</div>
+    <div class="f-pills">
+      <span class="pill">AI Adoption</span>
+      <span class="pill">Trust Architecture</span>
+      <span class="pill">GenAI</span>
+      <span class="pill">Oncology</span>
+      <span class="pill">Market Access</span>
+    </div>
+    <div class="f-contact">
+      <div class="f-row"><span class="ico">✉</span> archna326@gmail.com</div>
+      <div class="f-row"><span class="ico">📍</span> Bridgewater, NJ</div>
+      <div class="f-row"><span class="ico">📞</span> (973) 495-7495</div>
+    </div>
+  </div>
+
+<!-- BACK -->
+  <div id="back">
+    <div class="b-name">Archna Patel, Pharm.D.</div>
+    <div class="b-quote">"Technology moves faster than trust. Trust comes from clinical credibility, transparent feedback, and compliance governance built into the architecture from day one."</div>
+    <div class="b-badge">AI Enablement &amp; Transformation</div>
+
+    <div class="b-pillars">
+      <div class="pillar">
+        <div class="p-ico">🤖</div>
+        <div>
+          <div class="p-label">AI Deployment &amp; Behavior Change</div>
+          <div class="p-sub">Built J&amp;J Oncology's first AI coaching simulator. 450+ reps. 1,025 practice attempts. Scores rose 57% to 72% — 26% skill improvement. 90.7% adoption intent. 73% voluntary engagement before any mandate.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="p-ico">🛡️</div>
+        <div>
+          <div class="p-label">Regulated AI Governance</div>
+          <div class="p-sub">Designed Legal, Medical &amp; Regulatory-approved AI framework. 7-step, 7-week deployment. Risk removed — speed preserved.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="p-ico">🎓</div>
+        <div>
+          <div class="p-label">Field Education at Scale</div>
+          <div class="p-sub">Delivered market access curriculum across 12 oncology field teams — IRA, Business of Oncology, Business of GU. Supporting a $90B portfolio.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="p-ico">🏢</div>
+        <div>
+          <div class="p-label">Operator &amp; P&amp;L Owner</div>
+          <div class="p-sub">Co-owned and operated a franchise business with 25 employees for 8 years, while holding senior roles at J&amp;J full-time.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-stats">
+      <div class="stat">
+        <div class="stat-num">95%</div>
+        <div class="stat-lbl">Faster Speed<br>to Impact</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1,200+</div>
+        <div class="stat-lbl">Professionals<br>Upskilled</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$110K</div>
+        <div class="stat-lbl">Vendor Savings<br>Delivered</div>
+      </div>
+    </div>
+
+    <div class="b-footer">
+      <div class="b-contact">
+        <strong>archna326@gmail.com</strong>
+        (973) 495-7495
+      </div>
+      <a class="b-li" href="https://www.linkedin.com/in/archna-patel326" target="_blank">🔗 LinkedIn</a>
+    </div>
+  </div>
+
+</div>
+
+<button class="toggle-btn" id="toggleBtn" onclick="
+  var f = document.getElementById('front');
+  var b = document.getElementById('back');
+  var btn = document.getElementById('toggleBtn');
+  if (b.style.display === 'flex') {
+    b.style.display = 'none';
+    f.style.display = 'flex';
+    btn.innerHTML = '&#8594; See Impact &amp; Story';
+  } else {
+    f.style.display = 'none';
+    b.style.display = 'flex';
+    btn.innerHTML = '&#8592; Back to Contact';
+  }
+">&#8594; See Impact &amp; Story</button>
+
+<button class="share-btn" onclick="
+  if(navigator.share){
+    navigator.share({title:'Archna Patel, Pharm.D.',text:'AI Enablement &amp; Transformation Leader — Pharma & Life Sciences',url:window.location.href});
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied!'));
+  }
+">Share Card</button>
+
+</body>
+</html>

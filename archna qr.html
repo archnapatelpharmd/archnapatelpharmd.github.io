@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<title>Archna Patel — Scan to Connect</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: #0B1F3A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    padding: 32px 20px;
+    gap: 0;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 36px 32px 28px;
+    max-width: 360px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  }
+
+  .name {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0B1F3A;
+    letter-spacing: -0.3px;
+    text-align: center;
+  }
+  .cred {
+    color: #00C9B1;
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 5px;
+  }
+  .title {
+    font-size: 11px;
+    color: #6B8BAE;
+    text-align: center;
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+  }
+
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #00C9B1, transparent);
+    border-radius: 2px;
+    margin: 16px 0;
+  }
+
+  .instruction {
+    font-size: 11px;
+    color: #6B8BAE;
+    text-align: center;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+  }
+
+  #qrcode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background: #f8fffe;
+    border-radius: 16px;
+    border: 2px solid rgba(0,201,177,0.2);
+  }
+
+  #qrcode canvas,
+  #qrcode img {
+    border-radius: 8px;
+    display: block;
+  }
+
+  .contact-row {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+  }
+  .c-line {
+    font-size: 11px;
+    color: #6B8BAE;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .c-line .ico { color: #00C9B1; font-size: 13px; }
+  .c-line span { color: #0B1F3A; font-weight: 500; }
+
+  .save-btn {
+    margin-top: 20px;
+    width: 100%;
+    background: #00C9B1;
+    color: #0B1F3A;
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    border-radius: 30px;
+    padding: 13px 20px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+  }
+  .save-btn:hover { opacity: 0.88; }
+
+  .footer-note {
+    margin-top: 14px;
+    font-size: 9.5px;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    letter-spacing: 0.4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="name">Archna Patel <span class="cred">Pharm.D.</span></div>
+  <div class="title">AI Enablement &amp; Transformation Leader<br>Regulated Pharma &amp; Life Sciences</div>
+
+  <div class="divider"></div>
+
+  <div class="instruction">Scan to view full profile</div>
+
+  <div id="qrcode"></div>
+
+  <div class="contact-row">
+    <div class="c-line"><span class="ico">✉</span><span>archna326@gmail.com</span></div>
+    <div class="c-line"><span class="ico">📞</span><span>(973) 495-7495</span></div>
+    <div class="c-line"><span class="ico">📍</span><span>Bridgewater, NJ</span></div>
+    <div class="c-line"><span class="ico">🔗</span><span>linkedin.com/in/archna-patel326</span></div>
+  </div>
+
+  <a class="save-btn" href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AArchna%20Patel%0AN%3APatel%3BArchna%3B%3B%3BPharm.D.%0ATITLE%3AAI%20Enablement%20%26%20Transformation%20Leader%0AORG%3AJohnson%20%26%20Johnson%0AEMAIL%3Aarchna326%40gmail.com%0ATEL%3B TYPE%3DCELL%3A(973)%20495-7495%0ANOTE%3ACommercial%20AI%20Capability%20Execution%20%7C%20Regulated%20Pharma%20%26%20Life%20Sciences%0AEND%3AVCARD" download="Archna_Patel.vcf">
+    Save to Contacts
+  </a>
+</div>
+
+<p class="footer-note">Show this screen — they scan, your full card opens instantly</p>
+
+<script>
+  // vCard data encoded into QR — scans directly into contacts on most phones
+  var liveUrl = "https://archnapatelpharmd.github.io";
+
+  new QRCode(document.getElementById("qrcode"), {
+    text: liveUrl,
+    width: 220,
+    height: 220,
+    colorDark: "#0B1F3A",
+    colorLight: "#f8fffe",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+</script>
+
+</body>
+</html>
